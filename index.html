@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Card Form</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="background"></div>
+	<div class="cardFront">
+		<div class="cardFrontTexts">
+			
+			<p class="numberOnCard">0000 0000 0000 0000</p>
+			<p class="nameOnCard">--</p>
+			<p class="dateOnCard">00/00</p>
+			
+		</div>
+
+		
+
+	</div>
+
+	<div class="cardBack">
+		
+		<p class="cvcOnCard">000</p>
+	</div>
+	<div class="formDiv">
+
+		<form>
+			<label for="cardHolderName">CARDHOLDER NAME</label>
+			<input type="text" name="cardHolderName" id="cardHolderName">
+
+			<label for="cardNumber">CARD NUMBER</label>
+			<input type="text" name="cardNumber" id="cardNumber">
+
+			<label for="MM">EXP. DATE (MM/YY)</label>
+			<input type="text" name="MM" id="MM">
+			<input type="text" name="YY" id="YY">
+
+			<label for="cvc">CVC</label>
+			<input type="text" name="cvc" id="cvc">
+
+			<button class="submitButton"></button>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="script.js"></script>
+</html>
