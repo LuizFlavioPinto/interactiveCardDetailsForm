@@ -5,43 +5,75 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Card Form</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
+
 	<div class="background"></div>
-	<div class="cardFront">
-		<div class="cardFrontTexts">
+
+
+	<div class="cards">
+
+		
+		<div class="cardFront">
 			
-			<p class="numberOnCard">0000 0000 0000 0000</p>
-			<p class="nameOnCard">--</p>
-			<p class="dateOnCard">00/00</p>
+				<p class="numberOnCard">0000 0000 0000 0000</p>
+				<p class="nameOnCard">Luiz Flávio</p>
+				<p class="dateOnCard">00/00</p>
 			
+
+
+		</div>
+
+
+
+		<div class="cardBack">
+			
+			<p class="cvcOnCard">000</p>
 		</div>
 
 		
 
 	</div>
-
-	<div class="cardBack">
-		
-		<p class="cvcOnCard">000</p>
-	</div>
+	
 	<div class="formDiv">
 
 		<form>
-			<label for="cardHolderName">CARDHOLDER NAME</label>
-			<input type="text" name="cardHolderName" id="cardHolderName">
+			<div class="cardHolderNameDiv">
+				
+				<label for="cardHolderName">CARDHOLDER NAME</label>
+				<input type="text" name="cardHolderName" id="cardHolderName" placeholder="e.g. Luiz Flavio">
 
-			<label for="cardNumber">CARD NUMBER</label>
-			<input type="text" name="cardNumber" id="cardNumber">
+			</div>
 
-			<label for="MM">EXP. DATE (MM/YY)</label>
-			<input type="text" name="MM" id="MM">
-			<input type="text" name="YY" id="YY">
+			<div class="cardNumberDiv">
+				
+				<label for="cardNumber">CARD NUMBER</label>
+				<input type="text" name="cardNumber" id="cardNumber" placeholder="e.g. 1234 5678 9123 0000">
 
-			<label for="cvc">CVC</label>
-			<input type="text" name="cvc" id="cvc">
+			</div>
+			
 
-			<button class="submitButton"></button>
+			
+
+			<div class="mmyyDiv">
+				<label for="MM">EXP. DATE (MM/YY)</label>
+				<input type="text" name="MM" id="MM" placeholder="MM">
+				<input type="text" name="YY" id="YY" placeholder="YY">
+
+			</div>
+
+			
+			<div class="cvcDiv">
+				<label for="cvc">CVC</label>
+				<input type="text" name="cvc" id="cvc" placeholder="e.g. 123">
+			</div>
+
+			
+
+			<button class="submitButton">Confirm</button>
 		</form>
 	</div>
 </body>
