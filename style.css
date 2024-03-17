@@ -27,7 +27,7 @@ body {
 	height: 60vw;	
 	position: relative;
 	margin: 0 auto;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 
 }
 
@@ -40,12 +40,11 @@ body {
 	background-size: cover;
 	border-radius: 6px;
 	box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.5);
-}
-
-.cardFront p, .cardBack p {
 	color: white;
 	font-weight: 500;
+
 }
+
 
 .cardFront {
 	background-image: url(images/bg-card-front.png);
@@ -64,14 +63,10 @@ body {
 	text-align: center;
 }
 
-.cardFront .nameOnCard {
-	font-size: 4vw;
-}
-
-.cardFront .dateOnCard {
+.cardFront .nameOnCard, .cardFront .dateOnCard {
 	font-size: 3vw;
+	display: flex;
 }
-
 
 .cardBack {
 	background-image: url(images/bg-card-back.png);
@@ -103,7 +98,7 @@ form {
 }
 
 form > div {
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -115,12 +110,16 @@ form label {
 }
 
 form input {
-	height: 10vw;
-	border-radius: 10px;
+	height: 13vw;
+	border-radius: 7px;
 	border: 1.5px solid #aaaaaa;
 	padding: 10px;
 	font-size: 5vw;
 	font-weight: 600;
+}
+
+form input:focus {
+	border-color: hsl(278, 68%, 25%);
 }
 
 ::-webkit-input-placeholder {
@@ -159,6 +158,14 @@ form input {
 
 .cvcDiv input {
 	width: 100%;
+}
+
+.errorText {
+	font-size: 3.5vw;
+	color: red;
+	display: block;
+	visibility: hidden;
+	margin: 1.5vw 0px 0px 1vw;
 }
 
 .submitButton {
