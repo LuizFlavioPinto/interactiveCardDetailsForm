@@ -41,13 +41,6 @@
 	<div class="formDiv">
 
 		<form onsubmit="execute(event)">
-			<div class="cardHolderNameDiv">
-				
-				<label for="cardHolderName">CARDHOLDER NAME</label>
-				<input type="text" name="cardHolderName" id="cardHolderName" placeholder="e.g. Luiz Flavio">
-				<p class="errorText">---</p>
-
-			</div>
 
 			<div class="cardNumberDiv">
 				
@@ -56,6 +49,16 @@
 				<p class="errorText">---</p>
 
 			</div>
+
+			<div class="cardHolderNameDiv">
+				
+				<label for="cardHolderName">CARDHOLDER NAME</label>
+				<input type="text" name="cardHolderName" id="cardHolderName" placeholder="e.g. Luiz Flavio">
+				<p class="errorText">---</p>
+
+			</div>
+
+			
 			
 
 			
@@ -75,10 +78,15 @@
 				<p class="errorText">---</p>
 			</div>
 
-			
-
 			<button class="submitButton">Confirm</button>
 		</form>
+	</div>
+
+	<div class="submitMessageDiv">
+		
+		<h1>CONGRATULATIONS</h1>
+
+		<button class="submitButton" onclick="restart()"></button>
 	</div>
 </body>
 <script type="text/javascript" src="script.js"></script>

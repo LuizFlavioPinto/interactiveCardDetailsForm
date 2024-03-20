@@ -91,6 +91,10 @@ body {
 	padding: 25px;
 }
 
+.submitMessageDiv {
+	display: none;
+}
+
 form {
 	display: flex;
 	flex-wrap: wrap;

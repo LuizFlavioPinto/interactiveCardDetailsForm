@@ -1,32 +1,171 @@
+const formDiv = document.querySelector('.formDiv')
+const submitMessageDiv = document.querySelector('.submitMessageDiv')
 const inputs = Array.from(document.querySelectorAll('form input'))
 const errorMessages = document.querySelectorAll('form > div p')
-let cardValues = document.querySelectorAll('.cards p') 
-/*
+const cardValues = document.querySelectorAll('.cards p') 
+const defaultCardValues = ['0000 0000 0000 0000', 'LUIZ FLAVIO', '00','00','000']
+
+
+// What is missing: Invalid Values verification
+
+inputs[0].addEventListener('input', function () {
+	if(this.value.length >= 19) jumpInput()
+
+	//Replace all the not numbers, puts a space between 4 numbers and limits to 19 the max length 
+
+	this.value = this.value.replace(/\D/g, '').replace(/(\d{4})(?=\d)/g, '$1 ').slice(0, 19)
+
+})
+
+inputs[1].addEventListener('input', function () {
+
+	this.value = this.value.replace(/[^a-zA-Z\s]/g, '').slice(0, 26)
+})
+
+inputs[2].addEventListener('input', function () {
+
+	if (this.value.length >= 2) jumpInput()
+	this.value = this.value.replace(/\D/g, '').slice(0,2)
+})
+
+inputs[3].addEventListener('input', function () {
+
+	if (this.value.length >= 2) jumpInput()
+	this.value = this.value.replace(/\D/g, '').slice(0,2)
+})
+
+inputs[4].addEventListener('input', function () {
+
+	this.value = this.value.replace(/\D/g, '').slice(0,3)
+})
+
 inputs.forEach((input, i) => {
 	input.addEventListener('input', function () {
 		cardValues[i].innerText = this.value.toUpperCase()
+
+		if(errorMessages[convertInputIndex(i)].style.visibility == 'visible') noError(convertInputIndex(i))
+
+		if(cardValues[i].innerText == ''){
+			cardValues[i].innerText = defaultCardValues[i]
+		}
 	})
 })
-*/
-
-inputs[0].addEventListener('input', function () {
-	this.value = this.value.replace(/[^a-zA-Z\s]/g, '')
-})
-
-for(let i = 1; i < inputs.length; i++){
-	inputs[i].addEventListener('input', function() {
-		this.value = this.value.replace(/[^0-9]/g, '')
-	})
-}
 
 function execute (event) {
 	event.preventDefault()
+	
 
-	jumpInput()
-	validateInput()
+	
+	validateInputs()
+
+ /*
+
 	submit()
+	showSubmitMessage()
+
+*/
 	
 }
+
+let isValidInput = [[false, false], [false, false], 
+	[false, false], [false, false], [false, false]]
+
+let canSubmit = false
+
+function validateInputs () {
+
+	let indexOfFocusedInput = inputs.indexOf(document.activeElement)
+
+	if( indexOfFocusedInput < 0 || indexOfFocusedInput >= 4){
+		inputs.forEach((input, i) => {
+			isValidInput[i][1] = isValidValue(i)
+			isValidInput[i][0] = isBlankChecking(i)
+		})
+
+	} else {
+		isValidInput[indexOfFocusedInput][1] = isValidValue(indexOfFocusedInput)
+		isValidInput[indexOfFocusedInput][0] = isBlankChecking(indexOfFocusedInput)
+		
+
+	}
+
+	
+	console.log(isValidInput)
+
+
+	function isBlankChecking (i) {
+		if(inputs[i].value == '') {
+			showCantBeBlankError(convertInputIndex(i))
+			return false
+		} else return true
+	}
+
+	function isValidValue (i) {
+
+		// Fix 
+
+		if(i === 0 && inputs[0].value.length < 19) {
+			showInvalidValueError(0)
+			return false
+		} else return true
+
+		if(i === 2 && inputs[2].value.length < 2) {
+			showInvalidValueError(2)
+			return false
+		} else return true
+
+		if(i === 3 && inputs[3].value.length < 2) {
+			showInvalidValueError(2)
+			return false
+		} else return true
+
+		if(i === 4 && inputs[4].value.length < 3) {
+			showInvalidValueError(3)
+			return false
+		} else return true
+
+	}
+
+/*
+
+	if (indexOfFocusedInput < 0 || indexOfFocusedInput >= 4){ 
+		// Check All
+		inputs.forEach((input, i) => {
+			isValidValue(i)
+			isBlankChecking(i)
+		})
+	} else {
+		// Check Individualy
+		isValidValue(indexOfFocusedInput)
+		isBlankChecking(indexOfFocusedInput)
+	}
+
+	
+	
+
+	
+
+	*/
+
+}
+
+function submit () {
+	// To be continued...
+	console.log('submit')
+}
+
+function showSubmitMessage() {
+
+	submitMessageDiv.style.display = 'block'
+	formDiv.style.display = 'none'
+
+
+}
+
+function restart () {
+	window.location.reload()
+}
+
 
 function jumpInput () {
 	let indexOfFocusedInput = inputs.indexOf(document.activeElement)
@@ -36,38 +175,31 @@ function jumpInput () {
 	}
 }
 
-function validateInput () {
-	// cant't be blank error
+function convertInputIndex (inputIndex) {
+	// This function was created because there are 4 erorr messages for 5 inputs
 
-	function showCantBeBlankError (index) {
-		errorMessages[index].style.visibility = 'visible'
-		errorMessages[index].innerText = `Can't be blank`
-	}
-
-	function showInvalidValueError (index) {
-		errorMessages[index].style.visibility = 'visible'
-		erorrMessages[index].innerText = `Invalid value`
-	}
-
-	inputs.forEach((input, i) => {
-		if(input.value === ''){
-// As there are 4 error messages for 5 inputs, can't just throw i as the index
-
-			if(i === 0) showCantBeBlankError(0)
-			if(i === 1) showCantBeBlankError(1)
-			if(i === 2) showCantBeBlankError(2)
-			if(i === 3) showCantBeBlankError(2)
-			if(i === 4) showCantBeBlankError(3)
-			
-
-		}
-	})
-
-	// invalid value error
-
+	if(inputIndex === 0) return 0
+	if(inputIndex === 1) return 1
+	if(inputIndex === 2) return 2
+	if(inputIndex === 3) return 2
+	if(inputIndex === 4) return 3
 
 }
 
-function submit () {
-	console.log('submit')
+function showCantBeBlankError (index) {
+	canSubmit = false
+	errorMessages[index].style.visibility = 'visible'
+	errorMessages[index].innerText = `Can't be blank`
+}
+
+function showInvalidValueError (index) {
+	canSubmit = false
+	errorMessages[index].style.visibility = 'visible'
+	errorMessages[index].innerText = `Invalid value`
+}
+
+function noError (index) {
+	canSubmit = true
+	errorMessages[index].style.visibility = 'hidden'
+	errorMessages[index].innerText = '---'
 }
