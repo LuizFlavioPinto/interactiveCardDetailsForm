@@ -27,7 +27,7 @@ body {
 	height: 60vw;	
 	position: relative;
 	margin: 0 auto;
-	margin-bottom: 20px;
+	margin-bottom: 13vw;
 
 }
 
@@ -41,7 +41,7 @@ body {
 	border-radius: 6px;
 	box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.5);
 	color: white;
-	font-weight: 500;
+	
 
 }
 
@@ -61,11 +61,13 @@ body {
 	font-size: 5.5vw;
 	width: 100%;
 	text-align: center;
+	font-weight: 500;
 }
 
 .cardFront .nameOnCard, .cardFront .dateOnCard {
 	font-size: 3vw;
 	display: flex;
+	font-weight: 400;
 }
 
 .cardBack {
@@ -88,7 +90,7 @@ body {
 	justify-content: center;
 	flex-wrap: wrap;
 	width: 100%;
-	padding: 25px;
+	padding: 0px 25px 25px 25px;
 }
 
 .submitMessageDiv {
@@ -187,3 +189,168 @@ form input:focus {
 .submitButton:hover {
 	cursor: pointer;
 }
+
+.submitMessageDiv {
+	display: none;
+	flex-wrap: wrap;
+	justify-content: center;
+	text-align: center;
+	padding: 25px;
+}
+
+
+.submitMessageDiv .icon-complete {
+	margin: 0 auto;
+	background-image: url(images/icon-complete.svg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	text-align: center;
+	width: 25vw;
+	height: 25vw;
+}
+
+.submitMessageDiv h1 {
+	width: 100%;
+	font-size: 7.5vw;
+	font-weight: 700;
+	margin: 7vw 0px 5vw 0px;
+	color: hsl(278, 68%, 25%);
+
+}
+
+.submitMessageDiv p {
+	font-size: 5vw;
+	font-weight: 600;
+	margin-bottom: 9vw;
+	color: rgb(0, 0, 0, 0.5);
+}
+
+@media only screen and (min-width: 1025px) {
+	body {
+		display: flex;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+	}
+
+	.background{
+		height: 100vh;
+		width: 35vw;
+	}
+
+	.cards{
+		width: 40%;
+		height: 100%;	
+	}
+
+	.cardFront, .cardBack {
+		width: 26vw;
+		height: 14vw;
+	}
+
+
+	.cardFront {
+		padding: 1.5vw;
+		top: 15%;
+		left: 30%;
+	}
+
+	.cardFront .numberOnCard {
+		font-size: 2vw;
+		width: 100%;
+		text-align: center;
+	}
+
+	.cardFront .nameOnCard, .cardFront .dateOnCard {
+		font-size: 0.8vw;
+		display: flex;
+	}
+
+	.cardBack {
+		left: 40%;
+		top: 50%;	
+		padding-right: 4vw;
+	}
+
+	.cardBack p {
+		font-size: 1vw;
+	}
+
+	.formDiv{
+		width: 55vw;
+		height: 100%;
+		align-items: center;
+		padding: 0;
+	}
+
+	form {
+		width: 40%;
+	}
+
+	form label {	
+		font-size: 1vw;
+	}
+
+	form input {
+		height: 2.5vw;
+		font-size: 1.1vw;
+		border: 1px solid #aaaaaa;
+	}
+
+
+	.mmyyDiv input {
+		width: 40%	;
+	}
+
+	.cvcDiv input {
+		width: 100%;
+	}
+
+	.errorText {
+		font-size: 0.8vw;
+		margin: 0.3vw 0px 0px 0.2vw;
+	}
+
+	.submitButton {
+		width: 100%;
+		font-size: 1.1vw;
+		height: 3vw;
+	}
+
+	.submitMessageDiv {
+		width: 55vw;
+		height: 100vh;	
+		align-content: center;
+	}
+
+
+	.submitMessageDiv .icon-complete {
+		width: 5vw;
+		height: 5vw;
+		margin-bottom: 1vw;
+		
+	}
+
+	.submitMessageDiv h1 {
+		width: 100%;
+		font-size: 1.6vw;
+		font-weight: 700;
+		margin: 1vw 0px 0.8vw 0px;
+		color: hsl(278, 68%, 25%);
+
+	}
+
+	.submitMessageDiv p {
+		font-size: 0.8vw;
+		font-weight: 600;
+		margin-bottom: 1vw;
+		color: rgb(0, 0, 0, 0.5);
+		width: 100%;
+	}
+
+	.submitMessageDiv > button {
+		width: 50%;
+		text-align: center;
+		margin: 0px auto;
+	}
+} 

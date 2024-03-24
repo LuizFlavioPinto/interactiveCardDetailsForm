@@ -20,6 +20,7 @@ inputs[0].addEventListener('input', function () {
 inputs[1].addEventListener('input', function () {
 
 	this.value = this.value.replace(/[^a-zA-Z\s]/g, '').slice(0, 26)
+	
 })
 
 inputs[2].addEventListener('input', function () {
@@ -51,6 +52,7 @@ inputs.forEach((input, i) => {
 	})
 })
 
+
 function execute (event) {
 	event.preventDefault()
 	
@@ -58,14 +60,15 @@ function execute (event) {
 	
 	validateInputs()
 
- /*
+ 
+	if(canSubmit === true){
+		submit()
+		showSubmitMessage()
+	}
 
-	submit()
-	showSubmitMessage()
-
-*/
-	
 }
+
+
 
 let isValidInput = [[false, false], [false, false], 
 	[false, false], [false, false], [false, false]]
@@ -76,21 +79,14 @@ function validateInputs () {
 
 	let indexOfFocusedInput = inputs.indexOf(document.activeElement)
 
-	if( indexOfFocusedInput < 0 || indexOfFocusedInput >= 4){
-		inputs.forEach((input, i) => {
-			isValidInput[i][1] = isValidValue(i)
-			isValidInput[i][0] = isBlankChecking(i)
-		})
-
-	} else {
-		isValidInput[indexOfFocusedInput][1] = isValidValue(indexOfFocusedInput)
-		isValidInput[indexOfFocusedInput][0] = isBlankChecking(indexOfFocusedInput)
-		
-
-	}
-
 	
-	console.log(isValidInput)
+	inputs.forEach((input, i) => {
+		isValidInput[i][1] = isValidValue(i)
+		isValidInput[i][0] = isBlankChecking(i)
+	})
+
+
+	canSubmit = finalCheckingResponse()
 
 
 	function isBlankChecking (i) {
@@ -104,48 +100,31 @@ function validateInputs () {
 
 		// Fix 
 
-		if(i === 0 && inputs[0].value.length < 19) {
+		if(i === 0 && (inputs[0].value.length < 19 || inputs[0].value.length == undefined)) {
 			showInvalidValueError(0)
 			return false
-		} else return true
-
-		if(i === 2 && inputs[2].value.length < 2) {
+		} else if(i === 2 && (inputs[2].value.length < 2 || inputs[2].value.length == undefined)) {
 			showInvalidValueError(2)
 			return false
-		} else return true
-
-		if(i === 3 && inputs[3].value.length < 2) {
+		} else if(i === 3 && (inputs[3].value.length < 2 || inputs[3].value.length == undefined)) {
 			showInvalidValueError(2)
 			return false
-		} else return true
-
-		if(i === 4 && inputs[4].value.length < 3) {
+		} else if(i === 4 && (inputs[4].value.length < 3 || inputs[4].value.length == undefined)) {
 			showInvalidValueError(3)
 			return false
 		} else return true
 
 	}
 
-/*
-
-	if (indexOfFocusedInput < 0 || indexOfFocusedInput >= 4){ 
-		// Check All
-		inputs.forEach((input, i) => {
-			isValidValue(i)
-			isBlankChecking(i)
-		})
-	} else {
-		// Check Individualy
-		isValidValue(indexOfFocusedInput)
-		isBlankChecking(indexOfFocusedInput)
+	function finalCheckingResponse() {
+		for(let i = 0; i < isValidInput.length; i++){
+			if(isValidInput[i][0] === false || isValidInput[i][1] === false) return false
+		}
+			
+		return true
 	}
 
-	
-	
 
-	
-
-	*/
 
 }
 
@@ -156,7 +135,7 @@ function submit () {
 
 function showSubmitMessage() {
 
-	submitMessageDiv.style.display = 'block'
+	submitMessageDiv.style.display = 'flex'
 	formDiv.style.display = 'none'
 
 
